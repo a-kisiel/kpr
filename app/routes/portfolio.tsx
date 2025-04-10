@@ -1,7 +1,6 @@
 import type { Route } from "./+types/home";
 import Menu from "../menu/menu";
-import Greeting from "../greeting/greeting";
-import Atlas from "../atlas/atlas";
+import Gallery from "../gallery/gallery";
 import Contact from "../contact/contact";
 
 import { useOutletContext } from "react-router";
@@ -13,14 +12,12 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
+export default function Portfolio() {
+    const metadata = useOutletContext();
 
-  const metadata = useOutletContext();
-
-  return <div>
-    <Menu />
-    <Greeting metadata={metadata} />
-    {/* <Atlas /> */}
-    <Contact />
-  </div>;
+    return <div>
+        <Menu />
+        <Gallery metadata={metadata} />
+        <Contact />
+    </div>;
 }

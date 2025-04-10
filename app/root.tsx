@@ -1,3 +1,4 @@
+import { createContext, useState } from 'react';
 import {
   isRouteErrorResponse,
   Links,
@@ -5,10 +6,22 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigate,
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
+
+const MetadataContext = createContext(null);
+
+function isEmpty(obj: any) {
+  for (const prop in obj) {
+    if (Object.hasOwn(obj, prop)) {
+      return false;
+    }
+  }
+  return true;
+}
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -42,7 +55,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+
+  const [metadata, setMetaData] = useState({});
+
+  if (isEmpty(metadata)) {
+    fetch('https://katieart.s3.us-east-2.amazonaws.com/metadata.json').then(r => {
+      return r.json();
+    }).then(data => {
+      setMetaData(data);
+    });
+  }
+
+  const nav = useNavigate();
+
+  return <Outlet context={metadata} />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
