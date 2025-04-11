@@ -1,0 +1,213 @@
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap);
+
+.gallery-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: auto;
+}
+
+.MuiAccordion-root {
+    box-shadow: none !important;
+}
+
+#back-home {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 25px;
+}
+
+#portfolio {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    min-height: 100vh;
+    transition-property: margin-left;
+    transition-duration: .4s;
+    z-index: 4;
+}
+#portfolio.hidden {
+    margin-left: 100vw;
+    height: 0;
+    min-height: 0;
+    z-index: 0;
+}
+#portfolio.hidden .collection-wrap {
+    transition: opacity .5s .5s;
+    opacity: 0;
+}
+
+#portfolio-header {
+    display: flex; flex-direction: column;
+    position: relative;
+    max-width: 1200px;
+    border-radius: 15px 15px 0 0;
+    margin: auto;
+    padding: 2px;
+}
+
+#portfolio-header .filter-wrapper {
+    display: flex; flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#section-header {
+    display: flex; flex-direction: column;
+    margin: auto;
+    color: #212529;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 1rem;
+    opacity: .9;
+    font-size: 3rem;
+}
+
+#selector {
+    width: 100%;
+    margin: 15px 0 15px auto;
+    z-index: 6;
+}
+#selector.hidden {
+    display: none;
+}
+
+.collection-header {
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    max-width: 1200px;
+    padding: 4px 8px;
+    margin: auto;
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: .2s;
+}
+.collection-header:hover { background-color: #CED4DA; }
+
+.collection-title {
+    font-size: 18px;
+}
+
+.gallery-wrapper {
+    columns: 5 200px;
+    column-gap: 1rem;
+    position: relative;
+    border-radius: 5px;
+    width: 100%; height: 100%;
+    min-height: 100vh;
+    height: auto; min-height: 0;
+    max-width: 1200px;
+    padding: 15px 0;
+    margin: auto;
+    margin-top: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    transition-property: all;
+    transition-duration: .2s;
+}
+.gallery-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.collection-wrap {
+    height: auto;
+    margin: 0 20px;
+    transition: opacity .5s .5s;
+}
+
+.collection-wrap.collapsed .gallery-wrapper {
+    height: 0;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.box {
+    display: inline-block;
+    width: 100%;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    height: auto;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    margin: 5px;
+}
+.collection-wrap.collapsed .gallery-wrapper .gallery-img {
+    transition-duration: .1s;
+    transition-property: all;
+    height: 0;
+    opacity: 0;
+}
+.gallery-img:hover {
+    opacity: .6;
+    transition-duration: .2s;
+}
+.gallery-img-title {
+    color: #DEE2E6;
+    background-color: #343A40;
+    position: relative;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 0 0 5px 5px;
+    width: 100%;
+    padding: 4px 0;
+    opacity: .8;
+    z-index: 8;
+    
+    width: 0%;
+    margin: -35px auto auto auto;
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: 0.3s all;
+}
+.gallery-img-wrap:hover .gallery-img-title {
+    width: 100%;
+    margin-left: 5px;
+}
+
+.react-transform-component {
+    width: 100%;
+}
+
+.clear {
+    clear: both;
+}
+
+@media (min-width: 767px) {
+
+    .collection-header { flex-direction: row; }
+
+    .collection-title { font-size: 28px; }
+
+    .gallery-img-title { font-size: 14px; }
+}
+
+@media only screen and (max-width: 982px) {
+    #portfolio-header {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .collection-header {
+        margin: 0 2%;
+    }    
+    
+    .gallery-wrapper {
+        height: 100%;
+        max-width: 1200px;
+        /* max-height: 100vh; */
+        columns: 3 100px;
+        column-gap: 1rem;
+        overflow-y: scroll;
+        margin: auto;
+    }
+}

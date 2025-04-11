@@ -1,0 +1,21 @@
+#atlas {
+    color: #DEE2E6;
+    background-color: #212529;
+    position: absolute;
+    width: 100%;
+    margin-top: -225px;
+}
+
+.portfolio-link {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+.portfolio-link:hover {
+    color: #ADB5BD;
+    transition: color .2s;
+}
+.portfolio-link > span {
+    font-size: min(9vw, 50px);
+    font-weight: 700;
+}

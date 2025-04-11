@@ -17,10 +17,10 @@ export default function Home() {
 
   const metadata = useOutletContext();
 
-  return <div>
+  return <div id="home">
     <Menu />
     <Greeting metadata={metadata} />
-    {/* <Atlas /> */}
+    <Atlas />
     <Contact />
   </div>;
 }

@@ -1,6 +1,6 @@
 import type { Route } from "./+types/home";
 import Menu from "../menu/menu";
-import Gallery from "../gallery/gallery";
+import Portfolio from "../portfolio/portfolio";
 import Contact from "../contact/contact";
 
 import { useOutletContext } from "react-router";
@@ -12,12 +12,12 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Portfolio() {
+export default function() {
     const metadata = useOutletContext();
 
     return <div>
         <Menu />
-        <Gallery metadata={metadata} />
+        <Portfolio />
         <Contact />
     </div>;
 }

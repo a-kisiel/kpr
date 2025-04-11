@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Modal from '@mui/material/Modal';
-import Backdrop from '@mui/material/Backdrop';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import './lightbox.css';
 
@@ -32,10 +31,6 @@ export default function Lightbox(props: any) {
               open={open}
               onClose={handleClose}
               closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
           >
             <div className="img-lightbox">
               <TransformWrapper doubleClick={{mode: 'reset'}}>
@@ -45,7 +40,7 @@ export default function Lightbox(props: any) {
               </TransformWrapper>
               <div className='img-description'>
                 <h2 className="img-title">{props.name}</h2>
-                <h2 className='img-media'>{props.media?.join(', ')}</h2>
+                <h2 className='img-media'>{props.media}</h2>
                 <h2 className='img-date'>{props.date}</h2>
               </div>
             </div>
