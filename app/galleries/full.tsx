@@ -2,7 +2,6 @@
 import { Link, useOutletContext, useSearchParams } from 'react-router';
 import Lightbox from '../lightbox/lightbox';
 import './gallery.css';
-import { light } from 'node_modules/@mui/material/esm/styles/createPalette';
 
 export default function Full() {
     const metadata = useOutletContext();
@@ -19,9 +18,9 @@ export default function Full() {
 
             const srcSet = `https://katieart.s3.us-east-2.amazonaws.com/hashed_compressed/${hash}.webp` + ', ' + `https://katieart.s3.us-east-2.amazonaws.com/hashed_uncompressed/${hash}.jpg`;
 
-            let parsedMedia = '';
+            const parsedMedia: String[] = [];
             piece.media.forEach((m: number) => {
-                parsedMedia += media[m];
+                parsedMedia.push(media[m]);
             });
 
             lightboxes.push(<div className="box">

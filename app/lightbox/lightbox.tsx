@@ -40,7 +40,7 @@ export default function Lightbox(props: any) {
               </TransformWrapper>
               <div className='img-description'>
                 <h2 className="img-title">{props.name}</h2>
-                <h2 className='img-media'>{props.media}</h2>
+                <h2 className='img-media'>{props.media.join(', ')}</h2>
                 <h2 className='img-date'>{props.date}</h2>
               </div>
             </div>
