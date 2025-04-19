@@ -4,16 +4,15 @@ import { BsArrowLeftShort } from 'react-icons/bs';
 import Collection from '../galleries/collection';
 import Date from '../galleries/date';
 import Full from '../galleries/full';
-import Lightbox from '../lightbox/lightbox';
 import Select from 'react-select';
 import './portfolio.css';
 
-function Gallery(mode: String) {
+function Gallery(mode: String, params: any) {
     if (mode === 'collection')
         return <Collection />;
     if (mode === 'date')
         return <Date />;
-    return <Full />;
+    return <Full params={params} />;
 };
 
 export default function Portfolio(props: any) {
@@ -24,14 +23,35 @@ export default function Portfolio(props: any) {
 
     const media = metadata.media;
     
+    const selected = params.getAll('media');
+    const selectedIDs: number[] = [];
+    if (selected && selected[0])
+        selected[0].split(',').forEach(s => {
+            selectedIDs.push(+s);
+        });
+        
+    const selectedOptions: any[] = [];
     const selectOptions: any[] = [];
     if (media) {
-        Object.values(media).forEach(m => {
-            selectOptions.push({
-                value: m,
-                label: m
-            });
+        Object.keys(media).forEach(key => {
+            const option = {
+                value: key,
+                label: media[key]
+            };
+            selectOptions.push(option);
+            if (selectedIDs.includes(+key))
+                selectedOptions.push(option);
         });
+    }
+
+    const changeFilter = (values: any) => {
+        const filters: any[] = [];
+        Object.keys(values).forEach(vk => {
+            filters.push(values[vk].value);
+        });
+        params.set("mode", "full");
+        params.set("media", filters);
+        setParams(params);
     }
 
     return (
@@ -43,11 +63,11 @@ export default function Portfolio(props: any) {
                     {   showSelect &&
                         <Select
                             id='selector'
-                            // className={visibleFilters.includes('media') ? '' : 'hidden'}
                             isMulti
-                            placeholder='All Media'
-                            // onChange={setFilters}
+                            placeholder='All Materials'
+                            onChange={changeFilter}
                             options={selectOptions}
+                            value={selectedOptions}
                             theme={(theme) => ({
                                 ...theme,
                                 borderRadius: '5px',
@@ -64,7 +84,7 @@ export default function Portfolio(props: any) {
                         />
                     }
                 </div>
-                <div>{Gallery(mode)}</div>
+                <div>{Gallery(mode, params)}</div>
             </div>
             <div className='clear'></div>
         </div>

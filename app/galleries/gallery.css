@@ -14,8 +14,8 @@
 #back-home {
     display: flex;
     align-items: center;
-    cursor: pointer;
     margin-right: 25px;
+    cursor: pointer;
 }
 
 #portfolio {
@@ -36,6 +36,9 @@
 #portfolio.hidden .collection-wrap {
     transition: opacity .5s .5s;
     opacity: 0;
+}
+
+.collection-gallery {
 }
 
 #portfolio-header {
@@ -87,8 +90,19 @@
 }
 .collection-header:hover { background-color: #CED4DA; }
 
-.collection-title {
-    font-size: 18px;
+.collection-title,
+.date-title {
+    font-size: min(9vw, 50px);
+    font-weight: 700;
+}
+
+.collection-accordion {
+    margin: auto;
+}
+
+.accordion-summary:hover {
+    background-color: #DEE2E6;
+    transition: background-color .2s;
 }
 
 .gallery-wrapper {

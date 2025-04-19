@@ -52,6 +52,15 @@ body { overflow: auto !important; }
     font-size: .8rem;
 }
 
+.img-sm {
+    width: 75px; height: 75px;
+    background-color: blueviolet;
+    background-size: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 @media only screen and (orientation:portrait)  {
 
     .lightbox {

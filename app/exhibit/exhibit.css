@@ -1,0 +1,104 @@
+#exhibit {
+    .exhibit-title {
+        h1 {
+            font-size: 40px;
+            font-weight: 800;
+        }
+
+        span {
+            color: #aaa;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        line-height: 1.1;
+    }
+
+    .exhibit-wrap {
+        .exhibit-imgs {
+            .exhibit-lightbox {
+                .gallery-img-wrap {
+                    .gallery-img {
+                        margin: 0;
+                    }
+
+                    .gallery-img-title {
+                        display: none;
+                    }
+                }
+            }
+
+            .exhibit-related-imgs {
+                display: flex;
+                margin-top: 20px;
+            }
+
+            display: flex;
+            flex-direction: column;
+            max-width: 60%;
+
+        }
+        
+        .exhibit-content {
+            .exhibit-collections {
+                .exhibit-collection {
+                    .exhibit-collection-header {
+                        font-size: 16px;
+                        font-weight: 700;
+                    }
+
+                    .exhibit-collection-date {
+                        color: gray;
+                        font-size: 13px;
+                        margin-top: -4px;
+                    }
+
+                    .exhibit-collection-location {
+                        font-size: 15px;
+                    }
+                }
+
+                margin-bottom: 15px;
+            }
+
+            .exhibit-materials {
+                .materials-list {
+                    li {
+                        a:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .content-header {
+                color: gray;
+                letter-spacing: 1.2px;
+                font-weight: 700;
+            }
+
+            .content-underline {
+                display: flex;
+                width: 100%; height: 1px;
+                background-color: darkgray;
+                margin-top: -2px;
+                margin-bottom: 4px;
+            }
+
+            width: 100%;
+            padding: 0 25px;
+        }
+
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    max-width: 1280px;
+    padding: 40px;
+    margin: auto;
+}

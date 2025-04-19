@@ -3,7 +3,7 @@
 .menu-wrapper {
     background-color: #212529;
     width: 100%;
-    opacity: .8;
+    /* opacity: .8; */
 }
 
 .menu-bar {
@@ -30,26 +30,25 @@
     float: left;
 }
 
-#contact-button {
+.contact-button {
     background-color: #212529;
     position: relative;
-    min-height: 0;
 }
-.MuiCollapse-root { margin-right: -5px; }
+
+.accordion-wrap {
+    background-color: #212529 !important;
+    position: relative;
+}
 
 .contact-expanded {
     display: flex; flex-direction: column;
     background-color: #212529;
     position: absolute;
-    top: 60px; left: -131px;
-    width: 224px; height: auto;
-    opacity: 1;
-    border-radius: 4px;
-    margin: -8px 0 0 auto;
-    padding: 8px 16px;
-    transition: top .2s, opacity .3s;
+    width: auto;
+    right: 0;
+    padding: 16px !important;
+    z-index: 100;
 }
-.MuiCollapse-hidden .contact-expanded { top: 30px; opacity: 0; }
 
 .contact-expanded a {
     color: #E9ECEF;

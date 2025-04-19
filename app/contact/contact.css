@@ -45,10 +45,13 @@
 }
 
 .contact-icon {
+    width: 35px;
     padding-right: 10px;
 }
 
 .external-link {
+    display: flex;
+    align-items: center;
     color: #212529;
     text-decoration: none;
     z-index: 4;

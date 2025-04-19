@@ -12,8 +12,6 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
-const MetadataContext = createContext(null);
-
 function isEmpty(obj: any) {
   for (const prop in obj) {
     if (Object.hasOwn(obj, prop)) {
@@ -65,8 +63,6 @@ export default function App() {
       setMetaData(data);
     });
   }
-
-  const nav = useNavigate();
 
   return <Outlet context={metadata} />;
 }
