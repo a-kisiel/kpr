@@ -1,32 +1,59 @@
 @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap);
 
-.menu-wrapper {
+#mobile-menu {
+    display: flex;
+}
+#desktop-menu {
+    display: none;
+    justify-content: space-between;
     background-color: #212529;
     width: 100%;
-    /* opacity: .8; */
+}
+
+.menu-wrapper {
+    display: flex;
+    /* position: absolute; */
+    background-color: #212529;
+    width: 100%;
+    z-index: 100;
 }
 
 .menu-bar {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     max-width: 1250px;
     margin: auto;
 }
 
 .nav-menu {
+    width: auto;
     height: 60px;
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
-    background-color: #212529;
-    float: right;
     padding-left: 5px;
     padding-right: 5px;
     align-items: center;
+
+    button, span {
+        color: white;
+    }
+}
+
+.mobile-nav-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav-menu a {
+    color: #E9ECEF;
+    font-size: 20px;
+    line-height: 2;
 }
 
 #signature img {
     height: 60px;
     width: auto;
-    background-color: #212529;
     float: left;
 }
 
@@ -42,11 +69,9 @@
 
 .contact-expanded {
     display: flex; flex-direction: column;
-    background-color: #212529;
-    position: absolute;
     width: auto;
-    right: 0;
-    padding: 16px !important;
+    /* right: 0; */
+    /* padding: 16px !important; */
     z-index: 100;
 }
 
@@ -83,4 +108,9 @@ a.menu-item:hover {
 
 .clear {
     clear: both;
+}
+
+@media (min-width: 767px) {
+    #mobile-menu { display: none; }
+    #desktop-menu { display: flex; }
 }

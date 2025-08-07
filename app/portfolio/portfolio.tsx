@@ -19,7 +19,6 @@ export default function Portfolio(props: any) {
     const metadata = useOutletContext();
     const [params, setParams] = useSearchParams();
     const mode = params.get('mode') ?? 'full';
-    const [showSelect, setShowSelect] = useState(mode === 'full');
 
     const media = metadata.media;
     
@@ -55,12 +54,11 @@ export default function Portfolio(props: any) {
     }
 
     return (
-        <div id='portfolio' className={!props.showAtlas ? '' : 'hidden'}>
+        <div id='portfolio'>
             <div id='portfolio-header'>
-                {/* <h2 id='section-header'>{title}</h2> */}
-                <div className='filter-wrapper' style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                    <a id='back-home' href='/'><BsArrowLeftShort className='back-home-icon' /> Back</a>
-                    {   showSelect &&
+                <div className='filter-wrapper'>
+                    <div className='back-home-placeholder'></div>
+                    {   mode === 'full' &&
                         <Select
                             id='selector'
                             isMulti

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Lightbox from '~/lightbox/lightbox';
 import './exhibit.css';
-import { dividerClasses } from '@mui/material';
 import { Link } from 'react-router';
 
 export default function Exhibit (props: any) {
@@ -17,10 +16,9 @@ export default function Exhibit (props: any) {
     const srcSet = `https://katieart.s3.us-east-2.amazonaws.com/hashed_compressed/${hash}.webp` + ', ' + `https://katieart.s3.us-east-2.amazonaws.com/hashed_uncompressed/${hash}.jpg`;
 
     // Description
-    let description = null;
-    if (piece.description) {
-        description = <div className='exhibit-description'>{piece.description}</div>;
-    }
+    const description = piece.description ?
+        <div className='exhibit-description'>{piece.description}</div> :
+        null;
 
     // Collections
     let collectionsDiv = null;
@@ -73,6 +71,7 @@ export default function Exhibit (props: any) {
                     media={parsedMedia}
                     date={p.date}
                     useSmall={true}
+                    noDescription={true}
                 />
             </li>);
         }
@@ -96,6 +95,7 @@ export default function Exhibit (props: any) {
                             name={piece.title}
                             media={parsedMedia}
                             date={piece.date}
+                            noDescription={true}
                         />
                     </div>
                     {relatedContent}

@@ -15,6 +15,12 @@ body { overflow: auto !important; }
     outline: none;
 }
 
+.lightbox-icon {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    max-width: 250px; 
+}
+
 .zoomable {
     display: block;
     object-fit: contain;
@@ -24,11 +30,22 @@ body { overflow: auto !important; }
 
 .img-description {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 0;
     margin-bottom: 0;
     padding: 5px;
     background-color: rgba(15,16,12,.9);
+}
+
+.img-description-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.img-description-right {
+    color: #E9ECEF;
+    padding-right: 8px;
 }
 
 .img-title {
@@ -38,14 +55,9 @@ body { overflow: auto !important; }
     font-size: 1rem;
 }
 
-.img-media {
-    margin: 0;
-    margin-right: auto;
-    color: #F8F9FA;
-    font-size: .8rem;
-}
-
-.img-date {
+.img-media,
+.img-date,
+.view-page {
     margin: 0;
     margin-right: auto;
     color: #F8F9FA;

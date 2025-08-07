@@ -1,12 +1,13 @@
 import { useOutletContext, useSearchParams } from 'react-router';
 import Lightbox from '../lightbox/lightbox';
+import { filterGallery } from '~/utils';
 import './gallery.css';
 
 export default function Date(props: any) {
-    const metadata = useOutletContext();
+    const metadata: any = useOutletContext();
     const collections = metadata.collections;
     const media = metadata.media;
-    const pieces = metadata.pieces;
+    const pieces = filterGallery(metadata.pieces);
     
     const years = {};
     if (pieces) {
@@ -25,6 +26,7 @@ export default function Date(props: any) {
 
             years[year].push(<div className="box">
                 <Lightbox
+                    hash={hash}
                     source={srcSet}
                     name={piece.title}
                     media={parsedMedia}
@@ -34,8 +36,10 @@ export default function Date(props: any) {
         });
     }
 
+    const reverseChron = Object.keys(years).sort((a,b) => b - a);
+
     const content = [];
-    Object.keys(years).forEach(y => [
+    reverseChron.forEach(y => [
         content.push(<div>
             <div className='date-title'>{y}</div>
             <div className='gallery-wrapper'>

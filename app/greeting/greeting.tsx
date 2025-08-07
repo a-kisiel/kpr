@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './greeting.css';
+import Atlas from '~/atlas/atlas';
 
 export default function Greeting (props: any) {
     const metadata = props.metadata;    
@@ -14,13 +15,10 @@ export default function Greeting (props: any) {
         setWallpaperTitle(w.title);
         setwallpaperSrc(`url(https://katieart.s3.us-east-2.amazonaws.com/hashed_compressed/wallpapers/${wallpapers[random]}.webp)`);
     }
-    
+
     return (
         <div id='greeting' style={{backgroundImage: wallpaperSrc}}>
-            <div className='greeting-title-wrapper'></div>
-            <div style={{display: 'flex', flexDirection: 'column', margin: 'auto auto 0 auto', width: '100%'}}>
-                <div className='greeting-title'>{wallpaperTitle}</div>
-            </div>
+            <Atlas />
         </div>
     )
 }

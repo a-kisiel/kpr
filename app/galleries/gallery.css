@@ -22,9 +22,7 @@
     position: relative;
     max-width: 100%;
     height: auto;
-    min-height: 100vh;
-    transition-property: margin-left;
-    transition-duration: .4s;
+    min-height: calc(100vh - 85px);
     z-index: 4;
 }
 #portfolio.hidden {
@@ -38,22 +36,20 @@
     opacity: 0;
 }
 
-.collection-gallery {
-}
-
 #portfolio-header {
     display: flex; flex-direction: column;
     position: relative;
     max-width: 1200px;
     border-radius: 15px 15px 0 0;
     margin: auto;
-    padding: 2px;
+    padding: 0px 2px 2px 2px;
 }
 
 #portfolio-header .filter-wrapper {
     display: flex; flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    z-index: 100;
 }
 
 #section-header {

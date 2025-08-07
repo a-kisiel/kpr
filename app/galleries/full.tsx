@@ -4,10 +4,10 @@ import Lightbox from '../lightbox/lightbox';
 import './gallery.css';
 
 export default function Full(props: any) {
-    const metadata = useOutletContext();
+    const metadata = Object.create(useOutletContext());
     const collections = metadata.collections;
     const media = metadata.media;
-    const pieces = metadata.pieces;
+    const pieces = metadata.pieces ?? [];
 
     const selectedMedia: number[] = [];
     if (props.params) {
@@ -30,7 +30,8 @@ export default function Full(props: any) {
                 return;
             }
 
-            const srcSet = `https://katieart.s3.us-east-2.amazonaws.com/hashed_compressed/${hash}.webp` + ', ' + `https://katieart.s3.us-east-2.amazonaws.com/hashed_uncompressed/${hash}.jpg`;
+            const webpSrc = `https://katieart.s3.us-east-2.amazonaws.com/hashed_compressed/${hash}.webp`;
+            const jpgSrc = `https://katieart.s3.us-east-2.amazonaws.com/hashed_uncompressed/${hash}.jpg`;
 
             const parsedMedia: String[] = [];
             piece.media.forEach((m: number) => {
@@ -39,8 +40,12 @@ export default function Full(props: any) {
 
             lightboxes.push(<div className="box">
                 <Lightbox
-                    source={srcSet}
                     hash={hash}
+                    source={`${webpSrc}, ${jpgSrc}`}
+                    webpSrc={webpSrc}
+                    jpgSrc={jpgSrc}
+                    width={piece.width ?? 2588}
+                    height={piece.height ?? 3490}
                     name={piece.title}
                     media={parsedMedia}
                     date={piece.date}

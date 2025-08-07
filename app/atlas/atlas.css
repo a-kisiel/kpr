@@ -1,15 +1,44 @@
-#atlas {
-    color: #DEE2E6;
-    background-color: #212529;
-    position: absolute;
+.atlas-wrap {
+    display: flex;
     width: 100%;
-    margin-top: -225px;
+
+    .atlas-right {
+        width: calc((100% - 1250px) / 2);
+        background-color: #212529;
+        opacity: .8;
+    }
+}
+
+#atlas {
+    display: flex;
+    color: #DEE2E6;
+    width: 100%; height: 100%;
+    max-width: 1250px;
+    margin-left: auto;
+    z-index: 2;
+
+    .atlas-links-wrap {
+        display: flex;
+        background-color: #212529;
+        opacity: .8;
+        margin-left: auto;
+
+        .atlas-links {
+            display: none;
+            flex-direction: column;
+            width: auto;
+            margin-top: auto;
+            margin-left: auto;
+        }
+    }
+    
 }
 
 .portfolio-link {
     display: flex;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 20px;
+    margin-left: auto;
 }
 .portfolio-link:hover {
     color: #ADB5BD;
@@ -18,4 +47,14 @@
 .portfolio-link > span {
     font-size: min(9vw, 50px);
     font-weight: 700;
+    
+    &:first-child { 
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 767px) {
+    #atlas .atlas-links-wrap .atlas-links {
+        display: flex;
+    }
 }

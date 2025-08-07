@@ -30,6 +30,7 @@ export default function Collection(props: any) {
         
                     lightboxes.push(<div className="box">
                         <Lightbox
+                            hash={hash}
                             source={srcSet}
                             name={piece.title}
                             media={parsedMedia}
