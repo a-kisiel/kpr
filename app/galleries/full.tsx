@@ -44,8 +44,6 @@ export default function Full(props: any) {
                     source={`${webpSrc}, ${jpgSrc}`}
                     webpSrc={webpSrc}
                     jpgSrc={jpgSrc}
-                    width={piece.width ?? 2588}
-                    height={piece.height ?? 3490}
                     name={piece.title}
                     media={parsedMedia}
                     date={piece.date}
