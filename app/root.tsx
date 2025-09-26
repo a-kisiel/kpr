@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { useState } from 'react';
 import {
   isRouteErrorResponse,
   Links,
@@ -11,8 +11,6 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-
-const MetadataContext = createContext(null);
 
 function isEmpty(obj: any) {
   for (const prop in obj) {
@@ -65,8 +63,6 @@ export default function App() {
       setMetaData(data);
     });
   }
-
-  const nav = useNavigate();
 
   return <Outlet context={metadata} />;
 }

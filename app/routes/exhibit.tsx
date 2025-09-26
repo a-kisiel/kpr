@@ -1,9 +1,9 @@
 import type { Route } from "./+types/home";
 import Menu from "../menu/menu";
-import Portfolio from "../portfolio/portfolio";
+import Exhibit from "../exhibit/exhibit";
 import Contact from "../contact/contact";
 
-import { useOutletContext } from "react-router";
+import { useOutletContext, useParams } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,10 +14,11 @@ export function meta({}: Route.MetaArgs) {
 
 export default function() {
     const metadata = useOutletContext();
+    const params = useParams();
 
     return <div>
         <Menu />
-        <Portfolio />
+        <Exhibit hash={params.hash} metadata={metadata}/>
         <Contact />
     </div>;
 }

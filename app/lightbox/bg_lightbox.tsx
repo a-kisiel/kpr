@@ -19,38 +19,20 @@ export default function Lightbox(props: any) {
   
   const imgSet = `url(${props.webpSrc}), url(${props.jpgSrc})`;
 
-  const clickable = props.useSmall ?
-    <div 
+  const clickable = <div 
       onClick={handleOpen}
-      className='img-sm'
+      className='lightbox-icon'
       title={props.name}
       aria-label={props.name}
       alt={props.name}
-      style={{"backgroundImage": imgSet}}
+      style={{
+        "width": props.width,
+        "height": props.height,
+        "backgroundImage": imgSet,
+      }}
     ></div>
-    :
-    <img
-      onClick={handleOpen}
-      srcSet={props.source}
-      className='gallery-img'
-      aria-label={props.name}
-      alt={props.name}
-    />
     
-  const title = props.useSmall ?
-    null :
-    <div className='gallery-img-title'>{props.name}</div>;
-
-  const description = props.noDescription ?
-    null :
-    <div className='img-description'>
-      <Link to={`/portfolio/${props.hash}`}>
-        <h2 className="img-title">{props.name}</h2>
-        <h2 className='img-media'>{props.media.join(', ')}</h2>
-        <h2 className='img-date'>{props.date}</h2>
-        <h2 className='view-page' style={{marginTop: '5px', marginBottom: '5px'}}>View more</h2>
-      </Link>
-    </div>
+  const title = <div className='gallery-img-title'>{props.name}</div>;
 
   return (
     <div className='gallery-img-wrap'>
@@ -69,7 +51,16 @@ export default function Lightbox(props: any) {
                 <img srcSet={props.source} className='zoomable' alt={props.name}/>
               </TransformComponent>
             </TransformWrapper>
-            {description}
+            <div className='img-description'>
+              <div className='img-description-left'>
+                <h2 className="img-title">{props.name}</h2>
+                <h2 className='img-media'>{props.media.join(', ')}</h2>
+                <h2 className='img-date'>{props.date}</h2>  
+              </div>
+              <div className='img-description-right'>
+                <Link to={`/portfolio/${props.hash}`}>See more</Link>
+              </div>
+            </div>
           </div>
         </Modal>
       </div>

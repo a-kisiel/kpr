@@ -1,0 +1,34 @@
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1250px;
+    padding: 25px 0;
+    margin: auto;
+    z-index: 0;
+}
+
+#back-home {
+    display: none;
+    align-items: center;
+    margin-top: 57px;
+}
+
+.back-home-placeholder {
+    display: flex;
+    margin-top: 57px;
+}
+
+.MuiAccordion-root {
+    box-shadow: none !important;
+}
+
+@media(min-width: 767px) {
+    #back-home {
+        display: flex;
+    }
+
+    .back-home-placeholder {
+        display: none;
+    }
+}
