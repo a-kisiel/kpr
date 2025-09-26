@@ -5,7 +5,6 @@ import './gallery.css';
 
 export default function Full(props: any) {
     const metadata = Object.create(useOutletContext());
-    const collections = metadata.collections;
     const media = metadata.media;
     const pieces = metadata.pieces ?? [];
 

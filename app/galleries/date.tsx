@@ -4,16 +4,18 @@ import { filterGallery } from '~/utils';
 import './gallery.css';
 
 export default function Date(props: any) {
-    const metadata: any = useOutletContext();
-    const collections = metadata.collections;
+    const metadata = Object.create(useOutletContext());
     const media = metadata.media;
-    const pieces = filterGallery(metadata.pieces);
+    const pieces = metadata.pieces ?? [];
     
     const years = {};
     if (pieces) {
         const pattern = '-*([^\/]+)$';
         Object.keys(pieces).forEach(hash => {
             const piece = pieces[hash];
+            if (piece.omitFromGallery || piece.related) {
+                return;
+            }
             const year = piece.date.match(pattern)[0];
             if (!years[year])
                 years[year] = [];

@@ -6,7 +6,7 @@ import Lightbox from '../lightbox/lightbox';
 import './gallery.css';
 
 export default function Collection(props: any) {
-    const metadata = useOutletContext();
+    const metadata = Object.create(useOutletContext());
     const collections = metadata.collections;
     const media = metadata.media;
     const pieces = metadata.pieces;
@@ -20,6 +20,10 @@ export default function Collection(props: any) {
             const lightboxes:any[] = [];
             Object.keys(pieces).forEach(hash => {
                 const piece = pieces[hash];
+
+                if (piece.omitFromGallery || piece.related) {
+                    return;
+                }
 
                 if (piece.collections && piece.collections.includes(collectionID)) {
                     const srcSet = `https://katieart.s3.us-east-2.amazonaws.com/hashed_compressed/${hash}.webp` + ', ' + `https://katieart.s3.us-east-2.amazonaws.com/hashed_uncompressed/${hash}.jpg`;

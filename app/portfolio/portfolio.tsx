@@ -56,9 +56,8 @@ export default function Portfolio(props: any) {
     return (
         <div id='portfolio'>
             <div id='portfolio-header'>
-                <div className='filter-wrapper'>
-                    <div className='back-home-placeholder'></div>
-                    {   mode === 'full' &&
+                { mode === 'full' &&
+                    <div className='filter-wrapper'>
                         <Select
                             id='selector'
                             isMulti
@@ -80,8 +79,8 @@ export default function Portfolio(props: any) {
                                 }
                             })}
                         />
-                    }
-                </div>
+                    </div>
+                }
                 <div>{Gallery(mode, params)}</div>
             </div>
             <div className='clear'></div>

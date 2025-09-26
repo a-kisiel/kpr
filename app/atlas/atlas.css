@@ -23,8 +23,11 @@
         opacity: .8;
         margin-left: auto;
 
+        width: 100%;
+        margin-top: auto;
+
         .atlas-links {
-            display: none;
+            display: flex;
             flex-direction: column;
             width: auto;
             margin-top: auto;
@@ -54,7 +57,13 @@
 }
 
 @media (min-width: 767px) {
-    #atlas .atlas-links-wrap .atlas-links {
-        display: flex;
+    #atlas .atlas-links-wrap {
+        width: auto;
+        margin-top: 0;
+        margin-left: auto;
+
+       .atlas-links {
+            display: flex;
+        }
     }
 }
