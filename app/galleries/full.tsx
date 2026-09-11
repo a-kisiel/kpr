@@ -20,32 +20,32 @@ export default function Full(props: any) {
     const lightboxes: any[] = [];
 
     if (pieces) {
-        Object.keys(pieces).forEach(hash => {
-            const piece = pieces[hash];
+        pieces.forEach((piece: any) => {
             if (
-                piece.omitFromGallery || piece.related ||
+                piece.omitFromGallery || piece.parent_id || piece.parent_id ||
                 (selectedMedia.length > 0 && !piece.media.some((m:number) => selectedMedia.includes(m)))
             ) {
                 return;
             }
 
-            const webpSrc = `https://katieart.s3.us-east-2.amazonaws.com/hashed_compressed/${hash}.webp`;
-            const jpgSrc = `https://katieart.s3.us-east-2.amazonaws.com/hashed_uncompressed/${hash}.jpg`;
+            const webpSrc = `https://d239vh0ohrdra5.cloudfront.net/hashed_compressed/${piece.hash}.webp`;
+            const jpgSrc = `https://d239vh0ohrdra5.cloudfront.net/hashed_uncompressed/${piece.hash}.jpg`;
 
             const parsedMedia: String[] = [];
             piece.media.forEach((m: number) => {
-                parsedMedia.push(media[m]);
+                parsedMedia.push(media.find((medium: any) => medium.id === m));
             });
 
             lightboxes.push(<div className="box">
                 <Lightbox
-                    hash={hash}
+                    hash={piece.hash}
                     source={`${webpSrc}, ${jpgSrc}`}
                     webpSrc={webpSrc}
                     jpgSrc={jpgSrc}
                     name={piece.title}
                     media={parsedMedia}
-                    date={piece.date}
+                    startDate={piece.start_date}
+                    endDate={piece.end_date}
                 />
             </div>);
         });

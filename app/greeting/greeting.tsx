@@ -9,11 +9,11 @@ export default function Greeting (props: any) {
     const [wallpaperSrc, setwallpaperSrc] = useState('');
 
     if (metadata?.pieces && !wallpaperTitle) {
-        const wallpapers = Object.keys(metadata.pieces).filter((k: any) => metadata.pieces[k].wallpaper === true)
+        const wallpapers = Object.keys(metadata.pieces).filter((k: any) => metadata.pieces[k].is_wallpaper === true)
         const random = +Object.keys(wallpapers)[Math.floor(Math.random() * wallpapers.length)];
         const w = metadata.pieces[wallpapers[random]];
         setWallpaperTitle(w.title);
-        setwallpaperSrc(`url(https://katieart.s3.us-east-2.amazonaws.com/hashed_compressed/wallpapers/${wallpapers[random]}.webp)`);
+        setwallpaperSrc(`url(https://d239vh0ohrdra5.cloudfront.net/hashed_compressed/${w.hash}.webp)`);
     }
 
     return (

@@ -32,13 +32,13 @@ export default function Portfolio(props: any) {
     const selectedOptions: any[] = [];
     const selectOptions: any[] = [];
     if (media) {
-        Object.keys(media).forEach(key => {
+        media.forEach((medium: any) => {
             const option = {
-                value: key,
-                label: media[key]
+                value: medium.id,
+                label: medium.title
             };
             selectOptions.push(option);
-            if (selectedIDs.includes(+key))
+            if (selectedIDs.includes(+medium.id))
                 selectedOptions.push(option);
         });
     }
