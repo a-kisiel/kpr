@@ -15,30 +15,28 @@ export default function Collection(props: any) {
     if (collections && pieces) {
         Object.keys(collections).forEach(ck => {
             const collection = collections[ck];
-            const collectionID = +ck;
 
             const lightboxes:any[] = [];
-            Object.keys(pieces).forEach(hash => {
-                const piece = pieces[hash];
-
-                if (piece.omitFromGallery || piece.related) {
+            pieces.forEach((piece: any) => {
+                if (piece.omitFromGallery || piece.parent_id || !piece.active) {
                     return;
                 }
 
-                if (piece.collections && piece.collections.includes(collectionID)) {
-                    const srcSet = `https://katieart.s3.us-east-2.amazonaws.com/hashed_compressed/${hash}.webp` + ', ' + `https://katieart.s3.us-east-2.amazonaws.com/hashed_uncompressed/${hash}.jpg`;
+                if (piece.collections && piece.collections.includes(collection.id)) {
+                    const srcSet = `https://d239vh0ohrdra5.cloudfront.net/hashed_compressed/${piece.hash}.webp` + ', ' + `https://d239vh0ohrdra5.cloudfront.net/hashed_uncompressed/${piece.hash}.jpg`;
                     const parsedMedia: String[] = [];
                     piece.media.forEach((m: number) => {
-                        parsedMedia.push(media[m]);
+                        parsedMedia.push(media.find((medium: any) => medium.id === m));
                     });
         
                     lightboxes.push(<div className="box">
                         <Lightbox
-                            hash={hash}
+                            hash={piece.hash}
                             source={srcSet}
                             name={piece.title}
                             media={parsedMedia}
-                            date={piece.date}
+                            startDate={piece.start_date}
+                            endDate={piece.end_date}
                         />
                     </div>);
                 }

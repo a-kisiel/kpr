@@ -30,7 +30,7 @@ export default function MenuBar(props: any) {
     
     const menuComponent = 
         <div id='desktop-menu' className='menu-bar'>
-            <div id='signature' className='menu-item'><img src='https://katieart.s3.us-east-2.amazonaws.com/signature.png' alt='Katie Kisiel' /></div>
+            <div id='signature' className='menu-item'><img src='https://d239vh0ohrdra5.cloudfront.net/signature.png' alt='Katie Kisiel' /></div>
                 <div className='nav-menu'>
                     <Button onClick={openPortfolio}>Portfolio</Button>
                     <Menu
@@ -84,7 +84,7 @@ export default function MenuBar(props: any) {
         <div id='mobile-menu' className='menu-bar'>
             <Accordion style={{width: '100%'}}>
                 <AccordionSummary id='accordion-button' expandIcon={<FaBars id='hamburger-icon'/>}>
-                    <div id='signature' className='menu-item'><img src='https://katieart.s3.us-east-2.amazonaws.com/signature.png' alt='Katie Kisiel' /></div>
+                    <div id='signature' className='menu-item'><img src='https://d239vh0ohrdra5.cloudfront.net/signature.png' alt='Katie Kisiel' /></div>
                 </AccordionSummary>
                 <AccordionDetails id='accordion-details'>
                     <div className='mobile-nav-menu'>

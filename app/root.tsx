@@ -55,9 +55,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
 
   const [metadata, setMetaData] = useState({});
+  const url = true ?
+    'https://d239vh0ohrdra5.cloudfront.net/metadata.json' :
+    'http://localhost:5173/metadata.json';
 
   if (isEmpty(metadata)) {
-    fetch('https://katieart.s3.us-east-2.amazonaws.com/metadata.json').then(r => {
+    fetch(url).then(r => {
       return r.json();
     }).then(data => {
       setMetaData(data);
