@@ -14,7 +14,7 @@ export default function Date(props: any) {
             if (piece.omitFromGallery || piece.parent_id || !piece.active || !piece.end_date) {
                 return;
             }
-            const year = piece.end_date.match(pattern)[0];
+            const year = (`${piece.end_date}`).match(pattern)[0];
             if (!years[year])
                 years[year] = [];
 
@@ -38,6 +38,11 @@ export default function Date(props: any) {
     }
 
     const reverseChron = Object.keys(years).sort((a,b) => b - a);
+
+    if (years['present']){
+        reverseChron.pop();
+        reverseChron.unshift('present');
+    }
 
     const content = [];
     reverseChron.forEach(y => [
