@@ -6,7 +6,15 @@ import './lightbox.css';
 
 export default function Lightbox(props: any) {
   const [open, setOpen] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
+
+  const handleLoadStart = () => {
+    setLoaded(false);
+  };
+
+  const handleLoaded = () => {
+    setLoaded(true);
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -15,8 +23,31 @@ export default function Lightbox(props: any) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const ratio = props.width / props.height;
   
   const imgSet = `url(${props.webpSrc}), url(${props.jpgSrc})`;
+
+  const sizedDiv = <div
+    className='gallery-img'
+    style={{
+      aspectRatio: ratio,
+      backgroundColor: props.backgroundColor ?? ''
+    }}
+  >
+    <div className='thumbnail-mask' style={{backgroundImage: props.thumbnailSrc ? `url(${props.thumbnailSrc})` : ''}}></div>
+    <div className='loading-mask'></div>
+    <img
+      onLoadStart={handleLoadStart}
+      onLoad={handleLoaded}
+      onError={(e) => console.log(e)}
+      onClick={handleOpen}
+      srcSet={props.source}
+      aria-label={props.name}
+      alt={props.name}
+      style={{opacity: loaded ? 1 : 0}}
+    />
+  </div>;
 
   const clickable = props.useSmall ?
     <div 
@@ -24,17 +55,9 @@ export default function Lightbox(props: any) {
       className='img-sm'
       title={props.name}
       aria-label={props.name}
-      alt={props.name}
       style={{"backgroundImage": imgSet}}
-    ></div>
-    :
-    <img
-      onClick={handleOpen}
-      srcSet={props.source}
-      className='gallery-img'
-      aria-label={props.name}
-      alt={props.name}
-    />
+    ></div> :
+    sizedDiv;
     
   const title = props.useSmall ?
     null :

@@ -30,6 +30,7 @@ export default function Full(props: any) {
 
             const webpSrc = `https://d239vh0ohrdra5.cloudfront.net/hashed_compressed/${piece.hash}.webp`;
             const jpgSrc = `https://d239vh0ohrdra5.cloudfront.net/hashed_uncompressed/${piece.hash}.jpg`;
+            const thumbnailSrc = `https://d239vh0ohrdra5.cloudfront.net/thumbnails/pieces/${piece.hash}.jpg`;;
 
             const parsedMedia: String[] = [];
             piece.media.forEach((m: number) => {
@@ -42,7 +43,11 @@ export default function Full(props: any) {
                     source={`${webpSrc}, ${jpgSrc}`}
                     webpSrc={webpSrc}
                     jpgSrc={jpgSrc}
+                    thumbnailSrc={thumbnailSrc}
                     name={piece.title}
+                    width={piece.image_width}
+                    height={piece.image_height}
+                    backgroundColor={piece.image_color}
                     media={parsedMedia}
                     startDate={piece.start_date}
                     endDate={piece.end_date}
