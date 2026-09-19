@@ -142,12 +142,42 @@
 
 .gallery-img {
     width: 100%;
-    height: 100%;
     height: auto;
     border-radius: 5px;
     position: relative;
     z-index: 1;
     margin: 5px;
+
+    background-size: 100% auto;
+
+    .thumbnail-mask {
+        position: absolute;
+        width: 100%; height: 100%;
+        filter: blur(4px);
+        background-size: 100% auto;
+        z-index: 0;
+    }
+
+    .loading-mask {
+        position: absolute;
+        width: 100%; height: 100%;
+        background-image: url(/loading-thin.svg);
+        background-size: 55px;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: .3;
+        z-index: 1;
+    }
+
+    img {
+        position: relative;
+        width: 100%; height: 100%;
+        background-color: transparent;
+        border-radius: inherit;
+        z-index: 1;
+
+        transition: opacity .4s;
+    }
 }
 .collection-wrap.collapsed .gallery-wrapper .gallery-img {
     transition-duration: .1s;

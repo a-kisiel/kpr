@@ -24,6 +24,8 @@ export default function Collection(props: any) {
 
                 if (piece.collections && piece.collections.includes(collection.id)) {
                     const srcSet = `https://d239vh0ohrdra5.cloudfront.net/hashed_compressed/${piece.hash}.webp` + ', ' + `https://d239vh0ohrdra5.cloudfront.net/hashed_uncompressed/${piece.hash}.jpg`;
+                    const thumbnailSrc = `https://d239vh0ohrdra5.cloudfront.net/thumbnails/pieces/${piece.hash}.jpg`;
+
                     const parsedMedia: String[] = [];
                     piece.media.forEach((m: number) => {
                         parsedMedia.push(media.find((medium: any) => medium.id === m));
@@ -33,7 +35,11 @@ export default function Collection(props: any) {
                         <Lightbox
                             hash={piece.hash}
                             source={srcSet}
+                            thumbnailSrc={thumbnailSrc}
                             name={piece.title}
+                            width={piece.image_width}
+                            height={piece.image_height}
+                            backgroundColor={piece.image_color}
                             media={parsedMedia}
                             startDate={piece.start_date}
                             endDate={piece.end_date}
